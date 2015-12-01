@@ -29,9 +29,14 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SplitView.(SplitView.DisplayMode)" Value="Overlay"/>
+                        <Setter Target="ControlsSearchBox.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="button.(UIElement.Visibility)" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="pc">
+                    <VisualState.Setters>
+                        <Setter Target="button.(UIElement.Visibility)" Value="Collapsed"/>
+                    </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800"/>
                     </VisualState.StateTriggers>
@@ -58,6 +63,10 @@
                         PlaceholderText="Search for controls"
                         QueryIcon="Find"
                         RelativePanel.AlignRightWithPanel="True" />
+            <Button x:Name="button" RelativePanel.AlignRightWithPanel="True" Margin="8" 
+                    Visibility="Collapsed" Background="Transparent">
+                <SymbolIcon Symbol="Find"></SymbolIcon>
+            </Button>
         </RelativePanel>
         <!--=========================== SplitView============================= -->
         <SplitView x:Name="SplitView" IsPaneOpen="False" Grid.Row="1" DisplayMode="CompactInline" PaneClosing="SplitView_OnPaneClosing">
@@ -69,7 +78,7 @@
 
                     <CalendarView x:Name="CalendarControl" RelativePanel.Below="ScenarioControl" Width="100" Height="100"
                                   RelativePanel.AlignHorizontalCenterWithPanel="True" Visibility="Collapsed"/>
-    
+
                     <!--=======================Secondary button group ========================= -->
                     <StackPanel x:Name="SecondaryButtonGroup" RelativePanel.AlignBottomWithPanel="True">
                         <ToggleButton x:Name="BtnAccount" Style="{StaticResource SymbolButton}" Width="48"
