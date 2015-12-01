@@ -25,7 +25,11 @@
             </StackPanel>
 
             <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-               <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
                     <charting:Chart Name="piechart" Title="PieChart" Height="500" >
                         <charting:Chart.Series>
                             <Series:PieSeries
@@ -36,7 +40,7 @@
                             IsSelectionEnabled="True" />
                         </charting:Chart.Series>
                     </charting:Chart>
-                    <charting:Chart Name="piechart2" Title="PieChart" Grid.Row="1" Height="500">
+                    <charting:Chart Name="piechart2" Title="PieChart" Grid.Column="1" Height="500">
                         <charting:Chart.Series>
                             <Series:PieSeries
                             Title="Population"
@@ -46,8 +50,34 @@
                             IsSelectionEnabled="True" />
                         </charting:Chart.Series>
                     </charting:Chart>
-               </StackPanel>
+                </Grid>
             </ScrollViewer>
+            <Pivot Grid.Row="1" Visibility="Collapsed">
+                <PivotItem Header="Thu Chi">
+                    <charting:Chart Name="piechart3" Title="PieChart" Height="500" >
+                        <charting:Chart.Series>
+                            <Series:PieSeries
+                            Title="Population"
+                            ItemsSource="{Binding Items}"
+                            IndependentValueBinding="{Binding Name}"
+                            DependentValueBinding="{Binding Value}"
+                            IsSelectionEnabled="True" />
+                        </charting:Chart.Series>
+                    </charting:Chart>
+                </PivotItem>
+                <PivotItem Header="So Sanh">
+                    <charting:Chart Name="piechart4" Title="PieChart" Height="500" >
+                        <charting:Chart.Series>
+                            <Series:PieSeries
+                            Title="Population"
+                            ItemsSource="{Binding Items}"
+                            IndependentValueBinding="{Binding Name}"
+                            DependentValueBinding="{Binding Value}"
+                            IsSelectionEnabled="True" />
+                        </charting:Chart.Series>
+                    </charting:Chart>
+                </PivotItem>
+            </Pivot>
         </Grid>
     </Grid>
 </Page>
