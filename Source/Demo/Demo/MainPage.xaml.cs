@@ -44,7 +44,7 @@ namespace Demo
             SecondaryButtonGroup.Orientation = Orientation.Horizontal;
             CalendarControl.Visibility = Visibility.Visible;
         }
-
+        
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

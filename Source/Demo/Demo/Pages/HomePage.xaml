@@ -4,7 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Demo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:Series="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:datavis="using:WinRTXamlToolkit.Controls.DataVisualization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="HomePage_OnLoaded"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -21,11 +25,28 @@
             </StackPanel>
 
             <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <TextBlock TextWrapping="Wrap">
-                        Test for home page
-                    </TextBlock>
-                </StackPanel>
+               <StackPanel>
+                    <charting:Chart Name="piechart" Title="PieChart" Height="500" >
+                        <charting:Chart.Series>
+                            <Series:PieSeries
+                            Title="Population"
+                            ItemsSource="{Binding Items}"
+                            IndependentValueBinding="{Binding Name}"
+                            DependentValueBinding="{Binding Value}"
+                            IsSelectionEnabled="True" />
+                        </charting:Chart.Series>
+                    </charting:Chart>
+                    <charting:Chart Name="piechart2" Title="PieChart" Grid.Row="1" Height="500">
+                        <charting:Chart.Series>
+                            <Series:PieSeries
+                            Title="Population"
+                            ItemsSource="{Binding Items}"
+                            IndependentValueBinding="{Binding Name}"
+                            DependentValueBinding="{Binding Value}"
+                            IsSelectionEnabled="True" />
+                        </charting:Chart.Series>
+                    </charting:Chart>
+               </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,26 @@ namespace Demo
         public HomePage()
         {
             this.InitializeComponent();
+        }
+
+
+
+        public class NameValueItem
+        {
+            public string Name { get; set; }
+            public int Value { get; set; }
+        }
+
+        private void HomePage_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            List<NameValueItem> items = new List<NameValueItem>();
+            Random _random = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                items.Add(new NameValueItem { Name = "Test" + i, Value = _random.Next(10, 100) });
+            }
+            ((PieSeries)this.piechart.Series[0]).ItemsSource = items;
+            ((PieSeries)this.piechart2.Series[0]).ItemsSource = items;
         }
     }
 }
