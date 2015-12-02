@@ -12,13 +12,15 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
     Loaded="AddDialog_OnLoaded">
-    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <TextBox Name="TxtTenGd" Header="Tên giao dịch" Margin="0,5,0,5"/>
-        <TextBox Name="TxtTien" Header="Số tiền" Margin="0,0,0,5"/>
-        <DatePicker Name="DpNgay" Header="Ngày giao dịch" Margin="0,0,0,5"/>
-        <TextBox Name="TxtNguoiThamGia" Header="Người tham gia" Margin="0,0,0,5"/>
-        <TextBox Name="TxtGhiChu" Header="Ghi chú" Margin="0,0,0,5"/>
-        <ComboBox Name="BoxNhomGd" Header="Nhóm giao dịch" Margin="0,0,0,5"/>
-        <ComboBox Name="BoxLoaiGd" Header="Loại giao dịch" Margin="0,0,0,5"/>
-    </StackPanel>
+    <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBox Name="TxtTenGd" Header="Tên giao dịch" Margin="0,5,0,5"/>
+            <TextBox Name="TxtTien" Header="Số tiền" Margin="0,0,0,5"/>
+            <DatePicker Name="DpNgay" Header="Ngày giao dịch" Margin="0,0,0,5"/>
+            <TextBox Name="TxtNguoiThamGia" Header="Người tham gia" Margin="0,0,0,5"/>
+            <TextBox Name="TxtGhiChu" Header="Ghi chú" Margin="0,0,0,5"/>
+            <ComboBox Name="BoxNhomGd" Header="Nhóm giao dịch" Margin="0,0,0,5"/>
+            <ComboBox Name="BoxLoaiGd" Header="Loại giao dịch" Margin="0,0,0,5"/>
+        </StackPanel>
+    </ScrollViewer>
 </ContentDialog>

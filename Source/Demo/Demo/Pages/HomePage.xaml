@@ -12,6 +12,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="pc">
+                    <VisualState.Setters>
+                        <Setter Target="scrollViewer.(UIElement.Visibility)" Value="Visible"/>
+                        <Setter Target="pivot.(UIElement.Visibility)" Value="Collapsed"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="phone">
+                    <VisualState.Setters>
+                        <Setter Target="scrollViewer.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="pivot.(UIElement.Visibility)" Value="Visible"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid x:Name="RootGrid" Margin="12,10,12,12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -24,13 +46,13 @@
                 </TextBlock>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer x:Name="scrollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <charting:Chart Name="piechart" Title="PieChart" Height="500" >
+                    <charting:Chart Name="piechart" Title="PieChart">
                         <charting:Chart.Series>
                             <Series:PieSeries
                             Title="Population"
@@ -40,7 +62,7 @@
                             IsSelectionEnabled="True" />
                         </charting:Chart.Series>
                     </charting:Chart>
-                    <charting:Chart Name="piechart2" Title="PieChart" Grid.Column="1" Height="500">
+                    <charting:Chart Name="piechart2" Title="PieChart" Grid.Column="1">
                         <charting:Chart.Series>
                             <Series:PieSeries
                             Title="Population"
@@ -52,9 +74,9 @@
                     </charting:Chart>
                 </Grid>
             </ScrollViewer>
-            <Pivot Grid.Row="1" Visibility="Collapsed">
+            <Pivot x:Name="pivot" Grid.Row="1" Visibility="Collapsed">
                 <PivotItem Header="Thu Chi">
-                    <charting:Chart Name="piechart3" Title="PieChart" Height="500" >
+                    <charting:Chart Name="piechart3" Title="PieChart">
                         <charting:Chart.Series>
                             <Series:PieSeries
                             Title="Population"
@@ -66,7 +88,7 @@
                     </charting:Chart>
                 </PivotItem>
                 <PivotItem Header="So Sanh">
-                    <charting:Chart Name="piechart4" Title="PieChart" Height="500" >
+                    <charting:Chart Name="piechart4" Title="PieChart">
                         <charting:Chart.Series>
                             <Series:PieSeries
                             Title="Population"

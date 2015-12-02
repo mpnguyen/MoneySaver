@@ -46,6 +46,8 @@ namespace Demo
             }
             ((PieSeries)this.piechart.Series[0]).ItemsSource = items;
             ((PieSeries)this.piechart2.Series[0]).ItemsSource = items;
+            ((PieSeries)this.piechart3.Series[0]).ItemsSource = items;
+            ((PieSeries)this.piechart4.Series[0]).ItemsSource = items;
         }
     }
 }
