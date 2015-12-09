@@ -11,7 +11,7 @@
     Loaded="HomePage_OnLoaded"
     mc:Ignorable="d">
 
-    <Grid Background="#2980B9">
+    <Grid Background="#FFE8E8E8">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="pc">

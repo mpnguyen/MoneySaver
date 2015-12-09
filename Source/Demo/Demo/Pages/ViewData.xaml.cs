@@ -20,6 +20,10 @@ namespace Demo.Control
 {
     public sealed partial class ViewData : UserControl
     {
+        public delegate void DeleteButtonHandler(int ID);
+
+        public DeleteButtonHandler delete;
+        private int _id;
 
         public ViewData()
         {
@@ -29,6 +33,7 @@ namespace Demo.Control
         public ViewData(GiaoDich giaoDich)
         {
             this.InitializeComponent();
+            _id = giaoDich.ID;
             TieuDe.Text = giaoDich.Ten;
             SoTien.Text = giaoDich.SoTien.ToString();
             GhiChu.Text = giaoDich.GhiChu;
@@ -55,6 +60,11 @@ namespace Demo.Control
             {
                 commandBar.Visibility = Visibility.Visible;
             }
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            delete(_id);
         }
     }
 }

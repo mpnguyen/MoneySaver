@@ -44,7 +44,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <RelativePanel x:Name="HeaderPanel" Grid.Row="0" Background="Crimson">
+        <RelativePanel x:Name="HeaderPanel" Grid.Row="0" Background="#FF32C24D">
             <Border x:Name="Hamberger" HorizontalAlignment="Left"
                     RelativePanel.AlignVerticalCenterWithPanel="True">
                 <ToggleButton x:Name="HambergerButton" Style="{StaticResource SymbolButton}" Width="48"
@@ -70,7 +70,7 @@
             </Button>
         </RelativePanel>
         <!--=========================== SplitView============================= -->
-        <SplitView x:Name="SplitView" IsPaneOpen="False" Grid.Row="1" DisplayMode="CompactInline" PaneClosing="SplitView_OnPaneClosing" PaneBackground="#2C3E50" Background="#2980B9">
+        <SplitView x:Name="SplitView" IsPaneOpen="False" Grid.Row="1" DisplayMode="CompactInline" PaneClosing="SplitView_OnPaneClosing" PaneBackground="White" Background="#FFE8E8E8">
             <SplitView.Pane>
                 <RelativePanel>
                     <ListBox x:Name="ScenarioControl" SelectionChanged="ScenarioControl_OnSelectionChanged" SelectionMode="Single"
@@ -103,7 +103,7 @@
                 <!--==================================AppBar==============================-->
                 <StackPanel x:Name="AppBar" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" 
                             RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <CommandBar x:Name="CommandBar" Background="#2980B9" IsOpen="False">
+                    <CommandBar x:Name="CommandBar" Background="#FFE8E8E8" IsOpen="False">
                         <CommandBar.SecondaryCommands>
                             <AppBarButton Icon="Setting" Label="Settings"/>
                         </CommandBar.SecondaryCommands>

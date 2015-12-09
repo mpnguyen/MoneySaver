@@ -45,6 +45,15 @@ namespace BusLayer
                 LoaiGD = int.Parse(xmlNode.Attributes.GetNamedItem("IDLoai").NodeValue.ToString())
             }).ToList();
         }
-         
+
+        public async void DeleteGiaoDichByID(int id)
+        {
+            var dao = new DAO();
+            var doc = await dao.LoadDatabase();
+            var node = doc.SelectSingleNode("//GiaoDich[@ID=" + id + "]");
+            var element = doc.DocumentElement;
+            element.RemoveChild(node);
+            dao.SaveDatabase(element.OwnerDocument);
+        }
     }
 }

@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Loaded="ThuChiPage_OnLoaded">
 
-    <Grid Background="#16193B">
+    <Grid Background="#FFE8E8E8">
         <Grid x:Name="RootGrid" Margin="12,10,12,12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -26,7 +26,7 @@
             <Pivot Grid.Row="1">
                 <PivotItem Header="Giao dịch thu">
                     <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                        <toolkit:WrapPanel x:Name="ThuPanel" HorizontalAlignment="Center"/>
+                        <toolkit:WrapPanel x:Name="ThuPanel" HorizontalAlignment="Center" MaxWidth="1050"/>
                     </ScrollViewer>
                 </PivotItem>
                 <PivotItem Header="Giao dịch chi">

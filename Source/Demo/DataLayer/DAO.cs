@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Runtime.InteropServices.ComTypes;
+using Windows.ApplicationModel.Activation;
 using Windows.Data.Xml.Dom;
 
 
@@ -12,7 +14,7 @@ namespace DataLayer
 {
     public class DAO
     {
-        public static async Task<XmlDocument> LoadDatabase()
+        public async Task<XmlDocument> LoadDatabase()
         {
             var loadSettings = new XmlLoadSettings
             {
@@ -22,9 +24,15 @@ namespace DataLayer
 
             var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Database");
             var file = await folder.GetFileAsync("database.xml");
-
+            
             return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(file, loadSettings);
+        }
 
+        public async void SaveDatabase(XmlDocument document)
+        {
+            var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Database");
+            var file = await folder.CreateFileAsync("database.xml", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            await document.SaveToFileAsync(file);
         }
 
         public async Task<XmlNodeList> GetNodeList(string xpath)

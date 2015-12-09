@@ -1,4 +1,5 @@
-﻿using Windows.UI;
+﻿using System;
+using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -54,9 +55,18 @@ namespace Demo.Pages
                 foreach (var giaoDich in listThu)
                 {
                     var giaoDichItem = new ViewData(giaoDich);
+                    giaoDichItem.delete += Delete;
                     ThuPanel.Children.Add(giaoDichItem);
                 }
             }
+        }
+
+        private void Delete(int ID)
+        {
+            var bus = new BusGiaoDich();
+            bus.DeleteGiaoDichByID(ID);
+            LoadGDChi();
+            LoadGDThu();
         }
 
         private async void LoadGDChi()
