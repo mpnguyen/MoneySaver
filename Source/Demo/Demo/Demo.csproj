@@ -93,6 +93,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Database\database.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\btnBanknotes.png" />
+    <Content Include="Resources\btnBusiness.png" />
+    <Content Include="Resources\btnCalendar.png" />
     <Content Include="Resources\btnHome.png" />
     <Content Include="Resources\btnNo.png" />
     <Content Include="Resources\btnThuChi.png" />
@@ -120,6 +126,9 @@
     </Compile>
     <Compile Include="Pages\TietKiemPage.xaml.cs">
       <DependentUpon>TietKiemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewData.xaml.cs">
+      <DependentUpon>ViewData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenario.cs" />
@@ -169,6 +178,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ViewData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +197,7 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

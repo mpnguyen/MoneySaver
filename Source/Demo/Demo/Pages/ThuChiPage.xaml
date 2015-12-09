@@ -4,12 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Demo.Pages"
     xmlns:universalWrapPanel="using:Gregstoll"
+    xmlns:toolkit="using:WinRTXamlToolkit.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="ThuChiPage_OnLoaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#16193B">
         <Grid x:Name="RootGrid" Margin="12,10,12,12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -25,12 +26,12 @@
             <Pivot Grid.Row="1">
                 <PivotItem Header="Giao dịch thu">
                     <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                        <universalWrapPanel:UniversalWrapPanel x:Name="ThuPanel" Orientation="Horizontal"/>
+                        <toolkit:WrapPanel x:Name="ThuPanel" HorizontalAlignment="Center"/>
                     </ScrollViewer>
                 </PivotItem>
                 <PivotItem Header="Giao dịch chi">
                     <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                        <universalWrapPanel:UniversalWrapPanel x:Name="ChiPanel" Orientation="Horizontal"/>
+                        <toolkit:WrapPanel x:Name="ChiPanel" Margin="10"/>
                     </ScrollViewer>
                 </PivotItem>
             </Pivot>

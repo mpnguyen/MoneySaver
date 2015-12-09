@@ -12,23 +12,32 @@ namespace DataLayer
 {
     public class DAO
     {
-        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
+        public static async Task<XmlDocument> LoadDatabase()
         {
-            var storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
-            var storageFile = await storageFolder.GetFileAsync(file);
             var loadSettings = new XmlLoadSettings
             {
                 ProhibitDtd = false,
-                ResolveExternals = false
-            };        
-            return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
+                ResolveExternals = true
+            };
+
+            var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Database");
+            var file = await folder.GetFileAsync("database.xml");
+
+            return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(file, loadSettings);
+
         }
 
         public async Task<XmlNodeList> GetNodeList(string xpath)
         {
-            var doc = await LoadXmlFile("Data", "database.xml");
+            var doc = await LoadDatabase();
             var nodeList = doc.SelectNodes(xpath);
             return nodeList;
+        }
+        public async Task<IXmlNode> GetSingleNode(string xpath)
+        {
+            var doc = await LoadDatabase();
+            var node = doc.SelectSingleNode(xpath);
+            return node;
         }
     }
 }

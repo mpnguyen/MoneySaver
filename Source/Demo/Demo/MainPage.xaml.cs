@@ -42,7 +42,6 @@ namespace Demo
         {
             SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
             SecondaryButtonGroup.Orientation = Orientation.Horizontal;
-            CalendarControl.Visibility = Visibility.Visible;
         }
         
 
@@ -70,7 +69,6 @@ namespace Demo
         private void SplitView_OnPaneClosing(SplitView sender, SplitViewPaneClosingEventArgs args)
         {
             SecondaryButtonGroup.Orientation = Orientation.Vertical;
-            CalendarControl.Visibility = Visibility.Collapsed;
         }
 
         private async void ButtonAdd_OnClick(object sender, RoutedEventArgs e)

@@ -70,15 +70,12 @@
             </Button>
         </RelativePanel>
         <!--=========================== SplitView============================= -->
-        <SplitView x:Name="SplitView" IsPaneOpen="False" Grid.Row="1" DisplayMode="CompactInline" PaneClosing="SplitView_OnPaneClosing">
+        <SplitView x:Name="SplitView" IsPaneOpen="False" Grid.Row="1" DisplayMode="CompactInline" PaneClosing="SplitView_OnPaneClosing" PaneBackground="#2C3E50" Background="#2980B9">
             <SplitView.Pane>
                 <RelativePanel>
                     <ListBox x:Name="ScenarioControl" SelectionChanged="ScenarioControl_OnSelectionChanged" SelectionMode="Single"
                              HorizontalAlignment="Left" Background="Transparent" BorderThickness="0"
                              VerticalAlignment="Top" ItemTemplate="{StaticResource NavLinkItemTemplate}"/>
-
-                    <CalendarView x:Name="CalendarControl" RelativePanel.Below="ScenarioControl" Width="100" Height="100"
-                                  RelativePanel.AlignHorizontalCenterWithPanel="True" Visibility="Collapsed"/>
 
                     <!--=======================Secondary button group ========================= -->
                     <StackPanel x:Name="SecondaryButtonGroup" RelativePanel.AlignBottomWithPanel="True">
@@ -106,7 +103,7 @@
                 <!--==================================AppBar==============================-->
                 <StackPanel x:Name="AppBar" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" 
                             RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <CommandBar x:Name="CommandBar" Background="{ThemeResource AppBarBackgroundThemeBrush}" IsOpen="False">
+                    <CommandBar x:Name="CommandBar" Background="#2980B9" IsOpen="False">
                         <CommandBar.SecondaryCommands>
                             <AppBarButton Icon="Setting" Label="Settings"/>
                         </CommandBar.SecondaryCommands>

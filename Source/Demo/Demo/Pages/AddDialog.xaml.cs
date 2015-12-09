@@ -37,10 +37,8 @@ namespace Demo.Pages
                 SoTien = int.Parse(TxtTien.Text),
                 GhiChu = TxtGhiChu.Text,
                 Ngay = DateTime.Parse(DpNgay.Date.ToString()),
-                NguoiThamGia = TxtNguoiThamGia.Text,
-                NhomGd = new NhomGD() { TenNhom = BoxNhomGd.SelectedValue.ToString() }
+              
             };
-            if (BoxLoaiGd.SelectedItem != null) bus.AddGiaoDich((LoaiGD) BoxLoaiGd.SelectedItem, giaoDich);
 
         }
 
@@ -50,20 +48,10 @@ namespace Demo.Pages
 
         private async void AddDialog_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var bus = new Bus();
-            var listNhomGd = await bus.GetListNhomGd();
-            foreach (var nhomGd in listNhomGd)
-            {
-                BoxNhomGd.Items?.Add(nhomGd.TenNhom);
-            }
-            
-            BoxLoaiGd.Items.Add(LoaiGD.Thu);
-            BoxLoaiGd.Items.Add(LoaiGD.Chi);
-            BoxLoaiGd.Items.Add(LoaiGD.Vay);
-            BoxLoaiGd.Items.Add(LoaiGD.ChoVay);
-            BoxLoaiGd.Items.Add(LoaiGD.TietKiem);
-            BoxNhomGd.SelectedIndex = 0;
-            BoxLoaiGd.SelectedIndex = 0;
+            var bus = new BusLoaiGD();
+            var listLoaiGD = await bus.LoadLoaiGD();
+            BoxLoaiGd.ItemsSource = listLoaiGD;
+            BoxLoaiGd.DisplayMemberPath = "Ten";
         }
     }
 }

@@ -5,7 +5,9 @@
     xmlns:local="using:Demo.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:controls="using:WinRTXamlToolkit.Controls"
+    mc:Ignorable="d"
+    Loaded="NoPage_OnLoaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="RootGrid" Margin="12,10,12,12">
@@ -14,19 +16,24 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Margin="0,0,0,10">
-                <TextBlock Text="Sổ nợ" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap"/>
+                <TextBlock Text="Sổ nợ" Style="{StaticResource SampleHeaderTextStyle}"/>
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
                     Tiết kiệm tiền cho bạn
                 </TextBlock>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <TextBlock TextWrapping="Wrap">
-                        Không có dữ liệu
-                    </TextBlock>
-                </StackPanel>
-            </ScrollViewer>
+            <Pivot Grid.Row="1">
+                <PivotItem Header="Giao dịch vay">
+                    <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                        <controls:WrapPanel x:Name="VayPanel"/>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="Giao dịch cho vay">
+                    <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                        <controls:WrapPanel x:Name="ChoVayPanel"/>
+                    </ScrollViewer>
+                </PivotItem>
+            </Pivot>
         </Grid>
     </Grid>
 </Page>

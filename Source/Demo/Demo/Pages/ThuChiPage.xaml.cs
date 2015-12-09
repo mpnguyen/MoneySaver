@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI;
+﻿using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Entity;
 using BusLayer;
+using Demo.Control;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Demo.Pages
@@ -25,20 +15,27 @@ namespace Demo.Pages
     /// </summary>
     public sealed partial class ThuChiPage : Page
     {
+        private int _idThu;
+        private int _idChi;
         public ThuChiPage()
         {
             this.InitializeComponent();
         }
 
-        private void ThuChiPage_OnLoaded(object sender, RoutedEventArgs e)
+        private async void ThuChiPage_OnLoaded(object sender, RoutedEventArgs e)
         {
-            LoadThuChi();
+            //LoadThuChi();
+            var bus = new BusLoaiGD();
+            _idThu = await bus.LoadIDLoaiGD("Thu");
+            _idChi = await bus.LoadIDLoaiGD("Chi");
+            LoadGDThu();
+            LoadGDChi();
         }
 
-        private void LoadThuChi()
+        private async void LoadGDThu()
         {
-            var business = new Bus();
-            var listThu = business.GetListThu();
+            var business = new BusGiaoDich();
+            var listThu = await business.LoadGiaoDichByLoaiGD(_idThu);
             if (listThu.Count == 0)
             {
                 var status = new TextBlock()
@@ -56,22 +53,16 @@ namespace Demo.Pages
                 ThuPanel.Children.Clear();
                 foreach (var giaoDich in listThu)
                 {
-                    var giaoDichItem = new Button()
-                    {
-                        Content = giaoDich.Ten + "\n"
-                                + giaoDich.SoTien.ToString() + " VND\n"
-                                + giaoDich.Ngay.ToString() + "\n"
-                                + giaoDich.NguoiThamGia + "\n"
-                                + giaoDich.GhiChu,
-                        Width = 300,
-                        Margin = new Thickness(10, 10, 10, 10)
-                    };
-                    giaoDichItem.Click += GiaoDichItem_Click;
+                    var giaoDichItem = new ViewData(giaoDich);
                     ThuPanel.Children.Add(giaoDichItem);
                 }
             }
+        }
 
-            var listChi = business.GetListChi();
+        private async void LoadGDChi()
+        {
+            var business = new BusGiaoDich();
+            var listChi = await business.LoadGiaoDichByLoaiGD(_idChi);
             if (listChi.Count == 0)
             {
                 var status = new TextBlock()
@@ -89,36 +80,10 @@ namespace Demo.Pages
                 ChiPanel.Children.Clear();
                 foreach (var giaoDich in listChi)
                 {
-                    var giaoDichItem = new Button()
-                    {
-                        Content = giaoDich.Ten + "\n"
-                                + giaoDich.SoTien.ToString() + " VND\n"
-                                + giaoDich.Ngay.ToString() + "\n"
-                                + giaoDich.NguoiThamGia + "\n"
-                                + giaoDich.GhiChu,
-                        Width = 300,
-                        Margin = new Thickness(10, 10, 10, 10)
-                    };
-                    giaoDichItem.Click += GiaoDichItem_Click;
+                    var giaoDichItem = new ViewData(giaoDich);
                     ChiPanel.Children.Add(giaoDichItem);
                 }
             }
-        }
-        private void GiaoDichItem_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            if (button != null)
-                button.Flyout = new Flyout
-                {
-                    Content = new StackPanel()
-                    {
-                        Children =
-                        {
-                            new Button() {Content = "Update", Width = 80, Height = 50, Margin = new Thickness(5)},
-                            new Button() {Content = "Delete", Width = 80, Height = 50, Margin = new Thickness(5)}
-                        }
-                    }
-                };
         }
     }
 }
